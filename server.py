@@ -21,3 +21,7 @@ app.include_router(users.router, prefix="/users", tags=["users"])
 app.include_router(books.router, prefix="/books", tags=["books"])
 
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
+
+@app.get("/healthcheck")
+def read_healthcheck():
+    return {"status": "healthy"}
